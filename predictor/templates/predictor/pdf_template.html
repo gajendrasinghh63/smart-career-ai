@@ -1,0 +1,86 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>PDF Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            background: #2563eb;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .section {
+            margin-top: 20px;
+        }
+
+        .box {
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .green {
+            color: green;
+            font-weight: bold;
+        }
+
+        .red {
+            color: red;
+            font-weight: bold;
+        }
+
+        p {
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h2>Student Placement Report</h2>
+    </div>
+
+    <div class="section box">
+        <div class="title">Student Details</div>
+        <p><b>Name:</b> {{ student.full_name }}</p>
+        <p><b>Email:</b> {{ student.email }}</p>
+        <p><b>Phone:</b> {{ student.phone }}</p>
+        <p><b>College:</b> {{ student.college_name }}</p>
+        <p><b>Branch:</b> {{ student.branch }}</p>
+        <p><b>Semester:</b> {{ student.semester }}</p>
+        <p><b>CGPA:</b> {{ student.cgpa }}</p>
+        <p><b>Attendance:</b> {{ student.attendance }}</p>
+        <p><b>Resume Score:</b> {{ student.resume_score }}</p>
+    </div>
+
+    <div class="section box">
+        <div class="title">Prediction Result</div>
+        <p>
+            <b>Status:</b>
+            <span class="{% if result.prediction == 'Placed' %}green{% else %}red{% endif %}">
+                {{ result.prediction }}
+            </span>
+        </p>
+        <p><b>Probability:</b> {{ result.probability }}%</p>
+        <p><b>Suggested Role:</b> {{ result.suggested_role }}</p>
+        <p><b>Missing Skills:</b> {{ result.missing_skills }}</p>
+    </div>
+
+</body>
+</html>
